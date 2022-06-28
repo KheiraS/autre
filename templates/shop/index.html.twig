@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Boutique{% endblock %}
+
+{% block body %}
+
+
+<section class="shop">
+    <h1 class="title-shop">Boutique</h1>
+</section>
+    <section class="py-5">
+        <div class="container"><!-- DIV CONTAINER-->
+            <div class="row"><!-- DIV ROW -->
+                <!-- FILTRES -->
+                <div class="col-3">
+                    <h2>Filtrer par</h2>
+                    {{ form_start (form) }}
+{#                    <form method="GET" action="{{ path('product_store',{'idParent':idParent, 'currentPage':1, 'nbResult':nbResult}) }}"#}
+                    {{ form_end (form) }}
+                </div>
+
+                <div class="col-md-9"><!-- DIV COL -->
+                    {% if products|length == 0 %}
+                        <div class="text-danger">Aucun produit correspondant à votre recherche ! </div>
+                    {% endif %}
+                    <div class="row"><!-- DIV ROW -->
+
+                        <a href="{{ path('product_store',{'idParent':idParent,'currentPage': 1, 'nbResult': 2}) }}">Afficher 2 produits par page</a>
+                        <a href="{{ path('product_store',{'idParent':idParent,'currentPage': 1, 'nbResult': 4}) }}">Afficher 4 produits par page</a>
+
+                        {% for product in products %}
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="card-product shadow mb-5 rounded">
+                                    <div class="card-imgbox"><img src="{{ asset('images/uploads/product/' ~ product.image)}}" /></div>
+                                    <div class="card-body specifies">
+                                        <h2 class="mb-2">
+                                            {{ product.name|u.truncate(50,'...') }}<br />
+                                        </h2>
+
+                                        <label class="price mb-3">{{ product.price|number_format(2, '.', ' ') }} €</label>
+                                        <div>
+                                            <a href="{{ path('product_detail', {'id':product.id}) }}" class="btn-blue float-start"><i class="fas fa-plus fa-lg me-1"></i>Détail</a>
+                                            <a href="{{ path('cart_add', {'id':product.id}) }}" class="btn-blue float-end"><i class="fas fa-shopping-basket fa-lg me-1"></i>Panier</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                        <!--Pagination-->
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                {% if currentPage !=1 %}
+                                    <li class="page-item"><a class="page-link" href="{{ path('product_store',{'idParent':idParent,'currentPage': currentPage-1, 'nbResult': nbResult}) }}">Précédent</a></li>
+                                {% endif %}
+                                {% for page in 1..nbPage %}
+                                    <li class="page-item {% if page == currentPage%}active{% endif %}"><a class="page-link" href="{{ path('product_store', {'idParent':idParent,'currentPage':page, 'nbResult':nbResult}) }}">{{ page }}</a></li>
+                                {% endfor %}
+
+                                {% if currentPage !=nbPage %}
+                                    <li class="page-item"><a class="page-link" href="{{ path('product_store',{'idParent':idParent,'currentPage': currentPage+1, 'nbResult': nbResult}) }}">Suivant</a></li>
+                                {% endif %}
+
+                            </ul>
+                        </nav>
+                        <!--End of Pagination-->
+                    </div><!-- END DIV ROW -->
+                </div><!-- END DIV COL -->
+
+
+            </div><!-- END DIV ROW -->
+
+
+        </div><!-- END DIV CONTAINER-->
+    </section>
+{% endblock %}

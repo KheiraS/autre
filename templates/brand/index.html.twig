@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue sur la Nîmes'alerie!{% endblock %}
+
+{% block body %}
+
+<section class="container">
+    <div class="row">
+        <h1>Nos marques préférées</h1>
+    </div>
+    <div class="row">
+        {% for brand in brands %}
+
+            <div class="col-md-3 d-flex justify-content-center">
+                    <div class="card text-center mb-3" style="width: 18rem;">
+                        <img src="{{ asset('images/uploads/brand/' ~ brand.logo)}}" width="150" class="card-img-top" alt="Logo de marques">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ brand.name }}</h5>
+
+                            <a href="{{ path('brand_detail', {'idBrand':brand.id}) }}" class="btn blue">Voir les produits</a>
+                        </div>
+                    </div>
+
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

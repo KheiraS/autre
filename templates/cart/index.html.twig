@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue sur la Nîmes'alerie{% endblock %}
+
+{#{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('stylesheets/default/cart.css') }}">
+{% endblock %}#}
+
+{% block body %}
+    <section>
+
+    </section>
+
+    <div class="container py-5"><!-- container -->
+    {% if basket|length > 0 %}
+        <!-- Shopping Cart-->
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card-cart">
+                    <div class="card-body">
+                        <div class="table-responsive shopping-cart">
+                            <table class="table">
+                                <tbody>
+                                {% for cart in basket %}
+                                    {% dump cart %}
+                                    <tr>
+                                        <td>
+                                            <div class="product-item">
+                                                <img src="{{ asset('images/uploads/product/' ~ cart.product.image) }}" class="product-thumb rounded-5" width="100px" alt="Product">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="product-item">
+                                                <div class="product-info">
+                                                    <h6 class="product-title">{{ cart.product.name }}</h6>
+                                                    <p>Prix unitaire : {{ cart.product.price }} €</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="{{ path('cart_add_remove_one', {'id': cart.product.id, 'operator':'minus'}) }}" class="btn-increment-cart text-white" id="decrement"><i class="fas fa-minus mx-1"></i></a>
+                                            <input type="number" class="input-number" value="{{ cart.quantity }}" aria-label="quantity-added" min="1">
+                                            <a href="{{ path('cart_add_remove_one', {'id': cart.product.id, 'operator':'plus'}) }}" class="btn-increment-cart text-white" id="increment"><i class="fas fa-plus mx-1"></i></a>
+                                        </td>
+
+                                        <td class="text-center text-lg text-medium">{{ cart.product.price * cart.quantity }} €</td>
+                                        <td class="text-center">
+                                            <a href="{{ path('cart_remove_product', {'id': cart.product.id}) }}"><i id="remove" class="fas fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card-cart-summary border-light">
+                    <div class="card-header">
+                        <h5 class="card-title text-uppercase text-md-center">Total : <span class="text-medium">{{ total }} €</span></h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <p class="card-text"><i class="fas fa-shipping-fast mx-3"></i>Livraison rapide</p>
+                        <p class="card-text"><i class="fas fa-gift mx-3"></i>Remboursement gratuit</p>
+
+                    </div>
+                    <div class="card-footer text-muted text-center">
+                        <a href="{{ path('cart_validation') }}" class="btn btn-blue text-white">Valider mon panier</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="shopping-cart-footer"><!-- container -->
+            <div class="column"><a class="custom" href="#"><i class="icon-arrow-left"></i>Continuer vos achats</a></div>
+        </div>
+    {% else %} <h3 class="text-center">Votre panier est vide.</h3>
+    {% endif %}
+    </div><!-- End div Container -->
+{% endblock %}

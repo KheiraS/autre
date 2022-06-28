@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+
+    <section class="container my-5">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="bg-white box-shadow-medium rounded-10 p-4 p-sm-5">
+                <form method="post">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+
+                    {% if app.user %}
+                        <div class="mb-3">
+                            Vous êtes connecté(e) comme {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Me déconnecter</a>
+                        </div>
+                    {% endif %}
+
+                    <h2 class="mb-3">Me connecter</h2>
+                    <label for="inputEmail">Email</label>
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control rounded-pill mt-2 mb-3" autocomplete="email" required autofocus>
+                    <label for="inputPassword">Mot de passe</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control rounded-pill mt-2" autocomplete="current-password" required>
+
+                    <input type="hidden" name="_csrf_token"
+                               value="{{ csrf_token('authenticate') }}"
+                    >
+
+
+                    <button class="btn btn-blue mt-3 text-white" type="submit">
+                            Me connecter
+                    </button>
+                </form>
+                </div>
+            </div>
+            <div id="new_account" class="col-xs-12 col-sm-6 col-md-6  rounded-3 text-center text-white">
+                    <h2 class="mt-5">Nouveau client !</h2>
+                    <p>Vous souhaitez faire partie de nos membres privilégiés ? <br> Inscrivez-vous gratuitement à notre espace membre. <br> Prêt pour le lancement de votre compte !</p>
+                    <a class="btn btn-blue text-white" href="{{path('app_register') }}">Créer</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+{% endblock %}

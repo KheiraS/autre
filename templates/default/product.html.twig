@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue sur la Nîmes'Alerie{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/default/product.css') }}">
+{% endblock %}
+
+{% block body %}
+    <section class="title">
+    </section>
+ <section class="py-5 lightblue"><!-- SECTION -->
+     <div class="container"><!-- container -->
+         <div class="row"><!-- div row -->
+             <div class="col-lg-6"><!-- Product main img -->
+                 <img src="{{ asset('images/uploads/product/' ~ product.image) }}" alt="" class="img-fluid">
+             </div><!-- End div row -->
+
+             <div class="col-lg-6 lightgrey py-3">
+                 <h1>{{ product.name }}</h1>
+                 <div>
+                     <h3 class="product-price">{{ product.price }} €</h3>
+                     <span class="product-available">En Stock</span>
+                 </div>
+                 <p>{{ product.description }}</p>
+                 <input type="number" step="1" min="1" value="1" name="quantity" class="quantity-field border-0 text-center w-25">
+                 <a href="{{ path('cart_add', {'id':product.id}) }}" class="btn-blue"><i class="fas fa-shopping-basket fa-lg me-3"></i> Ajouter au panier</a>
+             </div>
+         </div>
+     </div><!-- End container -->
+ </section><!-- End SECTION -->
+{% endblock %}

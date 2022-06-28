@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue sur la Nîmes'Alerie{% endblock %}
+
+{% block body %}
+    <section class="service">
+        <div>
+            <h1 class="title-service"> Bienvenue chez La Nîmes'alerie</h1>
+        </div>
+
+    </section>
+
+    <section class="lightblue py-5">
+        <div class="container">
+            <div class="text-with-image">
+                <div class="row">
+                    <div class="col-6">
+                        <h2>Boutique futuriste depuis 2000</h2>
+                        <p class="text-service">Depuis plus de vingt ans, au coeur de Nîmes, votre boutique La
+                            Nîmes'alerie dépoussière l’univers des magasins pour chiens et chats !
+                            <br>Aux commandes : William Capard, un passionné de poilus, de jolies choses, d'étoiles et
+                            de planètes.
+                            <br>Pionniers dans le domaine, nous sélectionnons avec soin des produits haut de gamme pour
+                            <strong>leur durabilité, leur design et l’éthique de leur fabrication.</strong>
+                            <br>La Nîmes'alerie vous propose régulièrement des services originaux qui sont un moment de
+                            plaisir inoubliable pour vos animaux de compagnie.
+                        </p>
+                    </div>
+                    <div class="col-6">
+                        <img src="{{ asset('images/default/shop_lanimalerie.jpg') }}" alt="interieur-boutique"
+                             class="img-text-service">
+                    </div>
+                </div>
+            </div>
+            <div class="py-5">
+                <h3 class="transition">Explorer nos univers,<br> c'est un petit par vous, un grand pas pour votre animal
+                    de compagnie !</h3>
+            </div>
+            <div id="travel-space" class="travel-space-service">
+                <div class="row">
+                    <h2 class="text-white text-center py-5">Voyage de la terre à la lune</h2>
+                    <p class="text-travel-space text-white px-5">Depuis plus d'un an, nous mettons à votre disposition
+                        un service hors du commun.
+                        Parce que nous voulons vous faire vivre des sensations exceptionnelles et surtout faire vivre un
+                        moment mémorable à votre compagnon, nous proposons de le faire voyager dans l'espace.
+                        En collaboration avec la NASA, nous organisons cette exploration avec leurs meilleurs experts.
+                        Tout un programme attends votre animal : de l'entrainement, à la simulation, en passant par
+                        l'adaptation de son corps à l'apesanteur ; il sera prêt au décollage pour sa mission le jour
+                        J.</p>
+                    <a href="{{ path('contact') }}" class="btn-blue my-5">Demandez un devis</a>
+                </div>
+            </div>
+            <div class="py-5">
+                <div class="row">
+                    <h2 class="text-center text-white py-5">Nos autres services</h2>
+                    <Div  class="col-6 other-services text-center">
+                        <h3 id="massage"class="title-other-services py-3 ">Massage pour animaux</h3>
+                        <img src="{{ asset('images/default/massage_small.jpg') }}" alt="service-massage-animaux"
+                             class="img-other-services">
+                        <p class="text-white px-3 pt-3 text-other-services">Les séances de massage se déroulent à notre
+                            boutique, dans une pièce calme et zen.
+                            Le massage animalier produit ses effets de détente et de relaxation dès la première séance.
+                            La régularité augmente la faculté d’apaisement de votre animal au fil des séances. Il
+                            perçoit rapidement les bénéfices de la séance surtout si le massage est orienté sur le
+                            soulagement de pathologies</p>
+
+                        <a href="{{ path('contact') }}" class="btn-blue mb-5">Prendre rendez-vous</a>
+                    </Div>
+                    <Div  class="col-6 other-services text-center mx-auto">
+                        <h3 id="pet-sitting" class="title-other-services py-3">Garderie pour animaux</h3>
+                        <img src="{{ asset('images/default/loyalty_small.jpg') }}" alt="service-garderie-animaux"
+                             class="img-other-services">
+                        <p class="text-white px-3 pt-3 text-other-services">Faites confiance à l'un de nos pet-sitters
+                            passionné de chiens & chats, pour faire garder votre animal ! Ne vous sentez plus coupable de laisser
+                            votre compagnon seul à la maison. En partenariat avec la pension des mimosas, située dans
+                            l'arrière-pays nîmois, nous vous proposons de plus longs séjours pour que
+                            vous partiez en vacances l'esprit tranquille</p>
+
+                        <a href="{{ path('contact') }}" class="btn-blue mb-5">Prendre rendez-vous</a>
+                    </Div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

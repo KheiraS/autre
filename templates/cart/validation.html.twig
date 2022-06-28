@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue sur la Nîmes'Alerie{% endblock %}
+
+{% block body %}
+
+
+    <section class="container">
+        <div class="row my-5">
+            <div class="col-12 col-lg-8 mb-5">
+
+                <p> Votre panier {{ app.user.firstname }}</p>
+                <h5>Vos coordonnées de livraison</h5>
+                <p>La Nîmes'alerie propose uniquement une livraison par La Poste. <br> <strong>Merci de bien vérifier
+                        votre adresse de livraison</strong></p>
+
+                {{ form_start(AddressType) }}
+
+                <fieldset class="mb-3">
+                    <legend>Mon identité</legend>
+                    {{ form_row(AddressType.gender) }}
+                    {{ form_row(AddressType.lastname, {'attr': {'placeholder': app.user.lastname }}) }}
+                    {{ form_row(AddressType.firstname, {'attr': {'placeholder': app.user.firstname }}) }}
+                    {{ form_row(AddressType.address, {'attr': {'placeholder': app.user.address }}) }}
+                    {{ form_row(AddressType.postcode, {'attr': {'placeholder': app.user.postcode }}) }}
+                    {{ form_row(AddressType.city, {'attr': {'placeholder': app.user.city }}) }}
+                    {{ form_row(AddressType.Modifier)}}
+                </fieldset>
+
+                {{ form_end(AddressType, {'render_rest':false}) }}
+            </div>
+
+            <div class="col-12 col-lg-4">
+                <div class="card-cart-checkout border-light">
+                    <div class="card-body cart_summary">
+                        <h2>Votre panier</h2>
+                        {% for cart in basket %}
+                            <div class="media">
+                                <ul class="media-list">
+                                    <li class="media media-list__item">
+                                        <img src="{{ asset('images/uploads/product/' ~ cart.product.image) }}"
+                                             class="media-object" alt="Product" width="50">
+                                        <div class="media-body small">
+                                            <div class="product-name">
+                                                {{ cart.product.name }}
+                                            </div>
+                                            <div class="clearfix d-flex justify-content-between">
+                                                <span class="product-quantity float-left">x {{ cart.quantity }}</span>
+                                                <strong class="product-price float-right ">{{ cart.product.price * cart.quantity }}
+                                                    €</strong>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="card-footer text-muted text-center">
+                        <a href="#" class="btn btn-blue text-white">Valider</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+{% endblock %}

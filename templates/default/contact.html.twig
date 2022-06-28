@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue sur la Nîmes'Alerie{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/default/contact.css') }}">
+{% endblock %}
+
+{% block body %}
+
+{#    <section id="contact-section" class="title-img">
+
+            <h1 class="title-section">- Contactez-nous -</h1>
+
+    </section>#}
+    <section class="py-5">
+        <div class="container">
+            <div class="row contact-text">
+                <p class="text-center">Envie de bavarder ? Vous avez une question, une réclamation ou une idée à nous suggérer ? <br>Chez la Nîmes'alerie, nous sommes à votre écoute et gardons nos oreilles grandes ouvertes pour vous ! Nous répondrons dans les plus brefs délais... </p>
+                <br>
+                <p class="text-center">JETEZ UN OEIL À NOTRE FAQ...<br> la réponse à votre question s'y trouve peut-être.</p>
+            </div>
+        <div class="row py-3">
+            <div id="contact-image" class="col-lg-6">
+                <img class="img-fluid" src="{{ asset('images/default/homme_chien_ordinateur.jpg') }}" alt="homme avec son ordinateur et son chien" >
+            </div>
+            <div id="form-box" class="col-lg-6">
+                <h2 class="text-center">Restons en contact</h2>
+                <form class="contact-form row">
+                    <div class="form-field col-lg-6">
+                        <input id="lastname" class="input-text js-input" type="text" required>
+                        <label class="label" for="lastname">Nom</label>
+                    </div>
+                    <div class="form-field col-lg-6 ">
+                        <input id="firstname" class="input-text js-input" type="text" required>
+                        <label class="label" for="firstname">Prénom</label>
+                    </div>
+                    <div class="form-field col-lg-12 ">
+                        <input id="email" class="input-text js-input" type="email" required>
+                        <label class="label" for="email">E-mail</label>
+                    </div>
+
+                    <div class="form-field col-lg-12">
+                        <input id="message" class="input-text js-input" type="text" required>
+                        <label class="label" for="message">Message</label>
+                    </div>
+                    <div class="form-field col-lg-12">
+                        <input class="submit-btn" type="submit" value="Envoyer">
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue sur la Nîmes'Alerie{% endblock %}
+
+{% block body %}
+
+    <section class="lightblue">
+
+    </section>
+
+    <section class="container py-5">
+        <div class="row">
+            <h2>Bonjour {{ app.user.firstname }} {{ app.user.lastname }}</h2>
+            <p class="mb-5">Bienvenue sur votre espace personnel</p>
+            <div class="col-lg-6"><!--DIV col-lg-6 -->
+                <div class="row"><!--DIV ROW -->
+                    <div class="col-lg-6">
+                        <a class="text-center" href="">
+                            <div class="card-account mb-5 d-flex justify-content-center align-items-center" >
+                                <div class="card-body-account">
+                                    <i class="fa-solid fa-address-card fa-2x icon-account"></i>
+                                    <h5 class="card-title-account text-uppercase mt-3 title-account">Mes informations</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <a class="text-center" href="">
+                            <div class="card-account mb-5 d-flex justify-content-center align-items-center" >
+                                <div class="card-body-account">
+                                    <i class="fa-solid fa-location-dot fa-2x icon-account"></i>
+                                    <h5 class="card-title-account text-uppercase mt-3 title-account">Mon adresse</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div><!--End DIV ROW -->
+
+                <div class="row"><!--DIV ROW -->
+                    <div class="col-lg-6">
+                        <a class="text-center" href="">
+                            <div class="card-account mb-3 d-flex justify-content-center align-items-center" >
+                                <div class="card-body-account">
+                                    <i class="fa-solid fa-receipt fa-2x icon-account"></i>
+                                    <h5 class="card-title-account text-uppercase mt-3 title-account">Mes commandes</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <a class="text-center" href="{{ path('contact') }}">
+                            <div class="card-account mb-3 d-flex justify-content-center align-items-center">
+                                <div class="card-body-account">
+                                    <i class="fa-solid fa-pencil fa-2x icon-account"></i>
+                                    <h5 class="card-title-account text-uppercase mt-3 title-account">Contactez-nous</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div><!--End DIV ROW -->
+                <div class="row d-flex justify-content-center py-3">
+                    <div class="col-lg-6 d-flex justify-content-center">
+                        <a href="{{ path('app_logout')}}" class="btn-blue">Me déconnecter</a>
+                    </div>
+                </div>
+            </div><!--End DIV col-lg-6 -->
+
+            <div class="col-lg-6 d-flex justify-content-end">
+                <img src="{{ asset ('/images/default/chien-et-femme.jpg') }}" alt="femme avec son chien" width="513px" height="450px">
+            </div>
+
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,27 @@
+.bg-custom{
+    background-color:#b7c2cf;
+    border-radius: 10px;
+}
+.button-fixed{
+    bottom: 0;
+    position: fixed;
+    right: 0;
+    border-radius: 4px;
+}
+.fas{
+    cursor: pointer;
+    font-size: 54px;
+
+}
+.cookie-title{
+    color: #20818c;
+    font-family: "nasalizationregular", sans-serif;
+    text-transform: uppercase;
+}
+#cookie-text{
+    font-size: 14px;
+    color: #191545;
+}
+#btn-cookie{
+    background-color: #191545;
+}
